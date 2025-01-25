@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #0c242e;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="home.midterm.LoginController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-width: 0 1px 0 0; -fx-border-color: #f9ddb8;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="500.0" fitWidth="287.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/login-left.jpg" />
+               </image>
+            </ImageView>
+            <StackPane layoutX="1.0" prefHeight="168.0" prefWidth="280.0">
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/confluence-64.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="15.0" layoutX="24.0" layoutY="134.0" prefHeight="69.0" prefWidth="235.0" text="ChuplakTech" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="500.0" prefWidth="558.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane layoutX="33.0" prefHeight="168.0" prefWidth="453.0" style="-fx-border-color: #f9ddb8; -fx-border-width: 0 0 2px 0;">
+               <children>
+                  <ImageView fitHeight="86.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/lock-alt-128.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" top="30.0" />
+               </padding>
+            </StackPane>
+            <StackPane layoutY="230.0" prefHeight="0.0" prefWidth="517.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="15.0" text="Username:" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <TextField fx:id="usernameField" prefWidth="200.0" />
+                     </graphic>
+                  </Label>
+               </children>
+            </StackPane>
+            <StackPane layoutY="280.0" prefHeight="6.0" prefWidth="517.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" graphicTextGap="15.0" text="Password:" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <PasswordField fx:id="passwordField" prefWidth="200.0" />
+                     </graphic>
+                  </Label>
+               </children>
+            </StackPane>
+            <Button fx:id="loginBtn" defaultButton="true" layoutX="94.0" layoutY="375.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="49.0" prefWidth="332.0" text="Login">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER" contentDisplay="CENTER" graphicTextGap="15.0" layoutX="189.0" layoutY="134.0" prefHeight="69.0" prefWidth="140.0" style="-fx-background-color: #0c242e;" text="Sign In" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="36.0" />
+               </font>
+            </Label>
+            <StackPane layoutX="33.0" layoutY="324.0" prefHeight="39.0" prefWidth="454.0">
+               <children>
+                  <Label fx:id="isInvalidAlert" alignment="CENTER" text="Wrong username or password!" textFill="RED" underline="true" visible="false">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="isRequiredAlert" alignment="CENTER" text="Field cannot be empty. Please fill it in." textFill="RED" underline="true" visible="false">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="isValidAlert" alignment="CENTER" text="Login Success!" textFill="#62d36b" underline="true" visible="false">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </StackPane>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
