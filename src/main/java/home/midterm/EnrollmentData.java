@@ -1,23 +1,22 @@
 package home.midterm;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.scene.control.CheckBox;
 
-public class SubjectsData {
+public class EnrollmentData {
     private CheckBox selectColumn;
     private String courseCode;
     private String descTitle;
     private int labUnits, lecUnits, totalUnits;
     private String remarks;
 
-    public SubjectsData(String courseCode, String descTitle, int lecUnits, int labUnits, int totalUnits, String remarks) {
+    public EnrollmentData(CheckBox selectColumn ,String courseCode, String descTitle, int lecUnits, int labUnits, int totalUnits, String remarks) {
+        this.selectColumn = new CheckBox(selectColumn.getText());
         this.courseCode = courseCode;
         this.descTitle = descTitle;
         this.labUnits = labUnits;
         this.lecUnits = lecUnits;
         this.totalUnits = totalUnits;
         this.remarks = remarks;
-        this.selectColumn = new CheckBox();
     }
 
     public String getCourseCode() {

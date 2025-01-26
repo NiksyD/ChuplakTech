@@ -11,15 +11,11 @@ import java.io.IOException;
 
 public class SceneController {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     private void switchScene(String fxml, String title, ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        root = loader.load();
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
         stage.setTitle("ChuplakTech | " + title);
         stage.setScene(scene);
         stage.show();

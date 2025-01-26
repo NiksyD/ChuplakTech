@@ -2,9 +2,10 @@ package home.midterm;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,28 +16,31 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class SubjectsController extends SceneController implements Initializable {
+public class EnrollmentController extends SceneController implements Initializable {
 
     @FXML
-    private TableView<SubjectsData> tableView;
+    private TableView<EnrollmentData> tableView;
 
     @FXML
-    private TableColumn<SubjectsData, String> courseCode;
+    private TableColumn<EnrollmentData, CheckBox> selectColumn;
 
     @FXML
-    private TableColumn<SubjectsData, String> descTitle;
+    private TableColumn<EnrollmentData, String> courseCode;
 
     @FXML
-    private TableColumn<SubjectsData, Integer> lecUnits;
+    private TableColumn<EnrollmentData, String> descTitle;
 
     @FXML
-    private TableColumn<SubjectsData, Integer> labUnits;
+    private TableColumn<EnrollmentData, Integer> lecUnits;
 
     @FXML
-    private TableColumn<SubjectsData, Integer> totalUnits;
+    private TableColumn<EnrollmentData, Integer> labUnits;
 
     @FXML
-    private TableColumn<SubjectsData, String> remarks;
+    private TableColumn<EnrollmentData, Integer> totalUnits;
+
+    @FXML
+    private TableColumn<EnrollmentData, String> remarks;
 
     @FXML
     private ComboBox<String> semesterComboBox;
@@ -46,7 +50,19 @@ public class SubjectsController extends SceneController implements Initializable
     private final Map<String, String[][]> semesterSubjectsMap = new HashMap<>();
 
     // Dynamically populate subjectsList
-    ObservableList<SubjectsData> subjectsList = FXCollections.observableArrayList();
+    ObservableList<EnrollmentData> subjectsList = FXCollections.observableArrayList();
+
+    // Delete selected row to the table by checking the checkbox
+    @FXML
+    void deleteSelectedRow(ActionEvent event) {
+        ObservableList<EnrollmentData> selectedRows = FXCollections.observableArrayList();
+        for (EnrollmentData data : subjectsList) {
+            if (data.getSelectColumn().isSelected()) {
+                selectedRows.add(data);
+            }
+        }
+        subjectsList.removeAll(selectedRows);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -150,7 +166,7 @@ public class SubjectsController extends SceneController implements Initializable
         semesterComboBox.getItems().addAll(semesters);
 
         // Table View
-
+        selectColumn.setCellValueFactory(new PropertyValueFactory<>("selectColumn"));
         courseCode.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
         descTitle.setCellValueFactory(new PropertyValueFactory<>("descTitle"));
         lecUnits.setCellValueFactory(new PropertyValueFactory<>("lecUnits"));
@@ -171,13 +187,14 @@ public class SubjectsController extends SceneController implements Initializable
             subjectsList.clear();
             if (semesterSubjectsMap.containsKey(newValue)) {
                 for (String[] details : semesterSubjectsMap.get(newValue)) {
-                    subjectsList.add(new SubjectsData(
+                    subjectsList.add(new EnrollmentData(
+                            new CheckBox(), // Select Column
                             details[0], // Subject code
                             details[1], // Title
                             Integer.parseInt(details[2]), // Lecture Units
                             Integer.parseInt(details[3]), // Lab Units
                             Integer.parseInt(details[4]), // Credit Units
-                            details[5]  // Remarks
+                            details[5]  // Remarks,
                     ));
                 }
             }
