@@ -13,8 +13,8 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         try {
-//            System.out.println(System.getProperty("java.version"));
-//            System.out.println(System.getProperty("javafx.version"));
+            System.out.println(System.getProperty("java.version"));
+            System.out.println(System.getProperty("javafx.version"));
             Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             Scene scene = new Scene(root);
             stage.setResizable(false);
