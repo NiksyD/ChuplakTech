@@ -22,7 +22,7 @@ public class SceneController {
     }
 
     public void switchToDashboardScene(ActionEvent event) throws IOException {
-        switchScene("Home.fxml", "Home", event);
+        switchScene("Dashboard.fxml", "Home", event);
     }
 
     public void switchToNotificationScene(ActionEvent event) throws IOException {

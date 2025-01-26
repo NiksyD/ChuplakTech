@@ -175,6 +175,7 @@ public class EnrollmentController extends SceneController implements Initializab
         remarks.setCellValueFactory(new PropertyValueFactory<>("remarks"));
 
         // Disable reordering of columns
+        selectColumn.setReorderable(false);
         courseCode.setReorderable(false);
         descTitle.setReorderable(false);
         lecUnits.setReorderable(false);
